@@ -8,8 +8,9 @@ export const GifExpertApp = () => {
   const [ categories, setCategories ] = useState(['One Punch','Dragon Ball']);
 
   const onAddCategory = ( newCategory ) => {
-    // categories.push('Valorant'); // esto muta el  arreglo
+    if( categories.includes( newCategory ) ) return;
 
+    // categories.push('Valorant'); // esto muta el  arreglo
     setCategories([ newCategory, ...categories ]);
     // setCategories(categories => [...categories, 'Valorant']);
   };
