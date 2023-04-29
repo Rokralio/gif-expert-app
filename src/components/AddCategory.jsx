@@ -1,25 +1,27 @@
-import { useState } from 'react'
+import { useState } from 'react';
+
 
 export const AddCategory = ({ onNewCategory }) => {
 
-  const [ inputValue, setinputValue ] = useState('')
+  const [ inputValue, setInputValue ] = useState('');
 
-  const onInputChange = ({target}) => {
-    setinputValue( target.value );
+  const onInputChange = ({ target }) => {
+    setInputValue( target.value );
   }
 
-  const onSubmit = (event) => {
-    event.preventDefault()
-    if( inputValue.trim().length <= 1 ) return;
+  const onSubmit = ( event ) => {
+    event.preventDefault();
+    if( inputValue.trim().length <= 1) return;
 
-    onNewCategory( inputValue.trim() )
-    setinputValue('')
+    // setCategories( categories => [ inputValue, ...categories ]);
+    setInputValue('');
+    onNewCategory( inputValue.trim() );
   }
 
   return (
     <form onSubmit={ onSubmit }>
-      <input
-        type="text" 
+      <input 
+        type="text"
         placeholder="Buscar gifs"
         value={ inputValue }
         onChange={ onInputChange }
@@ -27,5 +29,3 @@ export const AddCategory = ({ onNewCategory }) => {
     </form>
   )
 }
-
-export default AddCategory
